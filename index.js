@@ -15,8 +15,8 @@ app.use(cors());
 app.use(express.json());
 
 
-const uri = ` mongodb+srv://${process.env.DB_User}:${process.env.DB_PASS}@cluster0.ow5x2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority  `;
-
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.ow5x2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+// console.log(uri);
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 async function run() {
@@ -64,7 +64,7 @@ async function run() {
 
         //all cars
         app.get('/carslist', async (req, res) => {
-            const id = carsCollection.find({})
+            const id = carsCollection.find({}) 
             const result = await id.toArray()
             res.send(result)
 
